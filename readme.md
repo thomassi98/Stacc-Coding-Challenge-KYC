@@ -9,4 +9,4 @@ For eksempel ***yarn start***
 
 ## Kommentarer
 Noen spesielle valg du ønsker å beskrive/forsvare?
-> Jeg brukte en del tid på å sette meg inn i Flask og web-apper generelt da jeg ikke har jobbet med akkurat dette før. Dette merkes nok mest i oppgave a) som man si at ble veldig "minimalistisk". Til mitt forsvar er delene jeg utelot (eks. pen formatering av HTML-tabeller) ting som er lett å bygge videre på og forbedre, og andre moduler er ikke noe særlig påvirket av disse.
+> Jeg brukte en del tid på å sette meg inn i Flask og web-apper generelt da jeg ikke har jobbet med akkurat dette før. Dette merkes nok mest i oppgave a) der man kan si at designet ble veldig "minimalistisk". Til mitt forsvar er delene jeg prioriterte vekk (eks. pen formatering av HTML-tabeller) ikke viktig for funksjonaliteten til programmet, og andre moduler er ikke noe påvirket av disse.
