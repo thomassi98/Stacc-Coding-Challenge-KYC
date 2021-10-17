@@ -8,15 +8,15 @@ app.config['JSON_AS_ASCII'] = False
 def index():
     return "Welcome to the KYC API"
 
-@app.route('/PEP/name=<string:name>', methods = ['GET'])
+@app.route('/API/PEP/name=<string:name>', methods = ['GET'])
 def get_PEP(name):
     return Stacc_API.get_PEP(name)
 
-@app.route('/roles/org_num=<int:org_num>', methods = ['GET'])
+@app.route('/API/roles/org_num=<int:org_num>', methods = ['GET'])
 def get_roles(org_num):
     return jsonify(Stacc_API.get_roles(org_num))
 
-@app.route('/company/org_num=<int:org_num>', methods = ['GET'])
+@app.route('/API/company/org_num=<int:org_num>', methods = ['GET'])
 def get_company(org_num):
     return Stacc_API.get_company(org_num)
 
