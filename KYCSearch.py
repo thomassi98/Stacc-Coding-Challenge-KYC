@@ -41,6 +41,7 @@ class Stacc_API():
         '''
         return requests.get('https://stacc-code-challenge-2021.azurewebsites.net/healthz').status_code == 200
 
+
     def get_roles(org_num):
         '''
         Send API Get request to search for and retriev roles in a company
@@ -49,6 +50,7 @@ class Stacc_API():
         '''
         return Stacc_API.__get_data(f'roller?orgNr={org_num}')
 
+
     def get_company(org_num):
         '''
         Send API Get request to search for and retrieve a company
@@ -56,6 +58,3 @@ class Stacc_API():
         return: json with company roles, None if none found
         '''
         return Stacc_API.__get_data(f'enheter?orgNr={org_num}')
-
-
-print(Stacc_API.get_company('981078365'))
