@@ -65,4 +65,4 @@ def get_company(org_num):
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run()
