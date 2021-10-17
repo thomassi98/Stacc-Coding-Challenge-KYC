@@ -7,4 +7,4 @@ class KYCSearchForm(Form):
         ('Company', 'Company')
     ]
     select = SelectField('Do a KYC Search:', choices = choices)
-    search = StringField("")
+    search = StringField('')

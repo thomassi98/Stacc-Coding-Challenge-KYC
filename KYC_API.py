@@ -1,8 +1,6 @@
-from flask import Flask, jsonify
-from werkzeug.utils import redirect
-from KYCSearch import Stacc_API
+from flask import Flask, jsonify, flash, render_template, request, redirect
+from stacc_api import Stacc_API
 from forms import KYCSearchForm
-from flask import flash, render_template, request
 
 app = Flask(__name__)
 app.config['JSON_AS_ASCII'] = False
@@ -16,20 +14,23 @@ def index():
 
     return render_template('index.html', form=search)
 
-
 @app.route('/results')
 def search_results(search):
-    results = []
-    search_string = search.data('search')
+    data = {}
+    search_string = search.data['search']
     
     #If no search
-    if search.data['search'] == '':
-        flash('Nothing to search for')
-    if not results:
+    if search_string == '':
+        data = data
+
+    if not data:
         flash('No results found')
         return redirect('/')
     else:
-        return render_template('results.html', resutls = results)
+        headings = data
+        data = data
+        return render_template('results.html', headings = headings)
+
 
 #API
 @app.route('/API/PEP/name=<string:name>', methods = ['GET'])
@@ -46,4 +47,5 @@ def get_company(org_num):
 
 
 if __name__ == "__main__":
+    app.secret_key = 'test key' #TODO find real secret key
     app.run(debug=True)
