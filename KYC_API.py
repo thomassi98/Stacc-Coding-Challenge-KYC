@@ -2,6 +2,7 @@ from flask import Flask, jsonify
 from KYCSearch import Stacc_API
 
 app = Flask(__name__)
+app.config['JSON_AS_ASCII'] = False
 
 @app.route('/')
 def index():
