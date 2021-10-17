@@ -1,10 +1,10 @@
 from flask import Flask, jsonify, flash, render_template, request, redirect
 from stacc_api import Stacc_API
 from forms import KYCSearchForm
-import json
 
 app = Flask(__name__)
 app.config['JSON_AS_ASCII'] = False
+app.secret_key = 'dev'
 
 #Task a)
 #Web app and search functions. Inspired by https://www.blog.pythonlibrary.org/2017/12/13/flask-101-how-to-add-a-search-form/
@@ -65,5 +65,4 @@ def get_company(org_num):
 
 
 if __name__ == "__main__":
-    app.secret_key = 'test key' #TODO find real secret key
-    app.run()
+    app.run(debug=True)
