@@ -6,7 +6,8 @@ import json
 app = Flask(__name__)
 app.config['JSON_AS_ASCII'] = False
 
-#Search functionality inspiration: https://www.blog.pythonlibrary.org/2017/12/13/flask-101-how-to-add-a-search-form/
+#Task a)
+#Web app and search functions. Inspired by https://www.blog.pythonlibrary.org/2017/12/13/flask-101-how-to-add-a-search-form/
 @app.route('/', methods = ["GET", "POST"])
 def index():
     search = KYCSearchForm(request.form)
@@ -14,6 +15,7 @@ def index():
         return search_results(search)
 
     return render_template('index.html', form=search)
+
 
 @app.route('/results')
 def search_results(search):
@@ -28,7 +30,6 @@ def search_results(search):
 
     flash('No results found')
     return redirect('/')
-
 
 
 def get_response(selection, search):
@@ -48,7 +49,8 @@ def get_response(selection, search):
         return None
 
 
-#API
+#Task b)
+#API part
 @app.route('/API/PEP/name=<string:name>', methods = ['GET'])
 def get_PEP(name):
     return Stacc_API.get_PEP(name)
@@ -64,4 +66,4 @@ def get_company(org_num):
 
 if __name__ == "__main__":
     app.secret_key = 'test key' #TODO find real secret key
-    app.run(debug=True)
+    app.run()
