@@ -1,6 +1,7 @@
 from flask import Flask, jsonify, flash, render_template, request, redirect
 from stacc_api import Stacc_API
 from forms import KYCSearchForm
+import json
 
 app = Flask(__name__)
 app.config['JSON_AS_ASCII'] = False
@@ -16,20 +17,35 @@ def index():
 
 @app.route('/results')
 def search_results(search):
-    data = {}
     search_string = search.data['search']
-    
-    #If no search
-    if search_string == '':
-        data = data
+    selected_string = search.select.data
 
-    if not data:
-        flash('No results found')
-        return redirect('/')
+    if search_string != '':
+        data = get_response(selected_string, search_string)
+        if data:
+            selected = selected_string.replace(' ', '_').lower()
+            return render_template(f'{selected}_data_table.html', data = data, search_string = search_string, selected = selected_string)
+
+    flash('No results found')
+    return redirect('/')
+
+
+
+def get_response(selection, search):
+    '''
+    Uses selection argument to call the correct get function from stacc_api
+    Param selection: String with selected search type, eg. PEP
+    Param search: search String
+    returns: Api response json
+    '''
+    if selection == 'PEP':
+        return get_PEP(search)
+    elif selection == 'Company Roles':
+        return Stacc_API.get_roles(search) #Roles are returned as list, not json
+    elif selection == 'Company':
+        return get_company(search)
     else:
-        headings = data
-        data = data
-        return render_template('results.html', headings = headings)
+        return None
 
 
 #API

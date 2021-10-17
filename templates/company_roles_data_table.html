@@ -1,0 +1,16 @@
+
+
+<h2>Showing search results for "{{ search_string }}" in {{ selected }}</h2>
+
+{% for dict in data%}
+<table>
+    {% for key, value in dict.items() %}
+       <tr>
+            <th> {{ key }} </th>
+            <td> {{ value }} </td>
+       </tr>
+    {% endfor %}
+    <hr>
+</table>
+{% endfor %}
+
