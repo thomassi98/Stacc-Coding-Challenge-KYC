@@ -25,8 +25,8 @@ def search_results(search):
     if search_string != '':
         data = get_response(selected_string, search_string)
         if data:
-            selected = selected_string.replace(' ', '_').lower()
-            return render_template(f'{selected}_data_table.html', data = data, search_string = search_string, selected = selected_string)
+            #selected = selected_string.replace(' ', '_').lower()
+            return render_template(f'{selected_string}_data_table.html', data = data, search_string = search_string, selected = selected_string)
 
     flash('No results found')
     return redirect('/')
@@ -41,9 +41,9 @@ def get_response(selection, search):
     '''
     if selection == 'PEP':
         return get_PEP(search)
-    elif selection == 'Company Roles':
+    elif selection == 'company_roles':
         return Stacc_API.get_roles(search) #Roles are returned as list, not json
-    elif selection == 'Company':
+    elif selection == 'company':
         return get_company(search)
     else:
         return None

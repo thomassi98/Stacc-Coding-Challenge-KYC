@@ -2,9 +2,10 @@ from wtforms import Form, StringField, SelectField
 
 class KYCSearchForm(Form):
     choices = [
-        ('PEP', 'PEP'),
-        ('Company Roles', 'Company Roles'),
-        ('Company', 'Company')
+        ('PEP', 'Politically Exposed Person'),
+        ('company_roles', 'Company Roles'),
+        ('company', 'Company')
     ]
-    select = SelectField('Do a KYC Search:', choices = choices)
-    search = StringField('')
+    select = SelectField('Search for:', choices = choices)
+
+    search = StringField("Fill in name or organization number:")
